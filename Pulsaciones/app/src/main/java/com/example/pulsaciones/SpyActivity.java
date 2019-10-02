@@ -26,7 +26,7 @@ public class SpyActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.d(getLocalClassName(),"onRestoreInstanceState");
     }

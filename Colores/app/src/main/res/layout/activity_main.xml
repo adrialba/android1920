@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_Color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:text="@string/color"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/rb_Azul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/blue" />
+
+        <RadioButton
+            android:id="@+id/rb_Amarillo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/yellow" />
+
+        <RadioButton
+            android:id="@+id/rb_Blanco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/white" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/b_Aceptar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/accept"
+        android:onClick="onPulsado"/>
+
+    <Button
+        android:id="@+id/b_Salir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/exit"
+        android:onClick="onPulsado"/>
+
+</LinearLayout>

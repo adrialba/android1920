@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Colores</string>
+    <string name="color">¿Que color te gusta?</string>
+    <string name="blue">Azul</string>
+    <string name="yellow">Amarillo</string>
+    <string name="white">Blanco</string>
+    <string name="accept">Aceptar</string>
+    <string name="exit">Salir</string>
+</resources>
