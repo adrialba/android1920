@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HolaMundo</string>
+    <string name="saludo">Hola que tal</string>
+    <string name="despedida">Adios</string>
+    <string name="aceptar">ACEPTAR</string>
+    <string name="salir">SALIR</string>
+    <string name="saludar">Saludar</string>
+    <string name="pulsar">Pulsa en cualquier lugar</string>
+    <string name="pulsado">Has pulsado %d veces</string>
+    <plurals name="veces">
+        <item quantity="one">Has pulsado %d vez</item>
+        <item quantity="other">Has pulsado %d veces</item>
+    </plurals>
+</resources>
