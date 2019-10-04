@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Colores_V2</string>
+    <string name="pregunta_color">¿Que color te gusta?</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="salir">Salir</string>
+    <string name="amarillo">Amarillo</string>
+    <string name="azul">Azul</string>
+    <string name="gris">Gris</string>
+</resources>
