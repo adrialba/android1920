@@ -1,5 +1,6 @@
 package com.example.colores_v2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b_salir.setOnClickListener(this);
         rg = findViewById(R.id.rg);
         rg.setOnCheckedChangeListener(this);
+        if (savedInstanceState!=null) {
+            color = savedInstanceState.getInt("color");
+            ll.setBackgroundColor(color);
+        }
     }
 
     @Override
@@ -38,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
         }
     }
-
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch(checkedId){
@@ -51,6 +55,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case (R.id.rb2):
                 color = Color.LTGRAY;
                 break;
+        }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("color", color);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState!=null){
+            color = savedInstanceState.getInt("color");
+            ll.setBackgroundColor(color);
         }
     }
 }
