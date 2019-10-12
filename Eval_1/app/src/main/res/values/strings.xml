@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Eval_1</string>
+    <string name="tv_escribe_nombre">Escribe tu nombre</string>
+    <string name="aceptar">Aceptar</string>
+</resources>
