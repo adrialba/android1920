@@ -1,4 +1,4 @@
-package com.example.misfotos;
+package com.example.dosactivities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
