@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b_cambiar.setOnClickListener(this);
         b_saludar = findViewById(R.id.b_saludar);
         b_saludar.setOnClickListener(this);
+        //Listeners especiales
         iv_foto = findViewById(R.id.iv_foto);
         registerForContextMenu(iv_foto); //Listener longClick
         ll_botones = findViewById(R.id.ll_botones);
@@ -56,16 +57,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Utilizamos un objeto llamado Intent
         Intent i = new Intent(this,SecondActivity.class);
         i.putExtra("nombre", "Adrian");
+        /*Iniciar la segunda y quedarae alli para siempre*/
         //startActivity(i);
         //finish();
+        /*Iniciar la segunda de forma modal y quedaese esperando un resultado*/
         startActivityForResult(i, 0);
     }
+    //Este metodo solo si hemos hecho startActivityForResult()
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         int color = data.getIntExtra("color", Color.LTGRAY);
         ll_botones.setBackgroundColor(color);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

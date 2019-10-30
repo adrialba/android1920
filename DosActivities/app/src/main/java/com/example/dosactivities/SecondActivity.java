@@ -21,13 +21,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        /*Recuperar el Intent*/
         i = getIntent();
+        /*Extraer la informacion si la hay*/
         String nombre = i.getStringExtra("nombre");
 
         iniciarLayout();
-        tv_pregunta.setText(getResources().getString(R.string.pregunta_color, nombre.toUpperCase()));
-
+        tv_pregunta.setText(getResources().getString(R.string.pregunta_color, nombre));
+        //Giro de orientacion de la pantalla
         if (savedInstanceState!=null) {
             color = savedInstanceState.getInt("color");
             ll.setBackgroundColor(color);

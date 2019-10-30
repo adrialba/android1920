@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:paddingTop="@android:dimen/app_icon_size"
     tools:context=".SecondActivity">
+    <include layout="@layout/mi_appbar"/>
 
     <TextView
         android:id="@+id/textView"

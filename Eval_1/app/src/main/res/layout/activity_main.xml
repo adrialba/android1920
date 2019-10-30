@@ -5,23 +5,29 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     tools:context=".Figura1.MainActivity">
-    <TextureView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_escribe_nombre"/>
     <EditText
         android:id="@+id/et_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"/>
-
-    <Button
-        android:id="@+id/b1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="182dp"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onPulsado"
-        android:text="@string/aceptar" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPulsado"
+            android:text="@string/aceptar" />
+        <Button
+            android:id="@+id/b_salir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/salir"/>
+    </LinearLayout>
 </LinearLayout>
