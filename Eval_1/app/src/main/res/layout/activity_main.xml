@@ -1,40 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal|center_vertical"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <include layout="@layout/mi_appbar"/>
-
-    <ImageView
-        android:id="@+id/iv_foto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/indice1"
-        android:layout_weight="4"/>
-
-    <LinearLayout
-        android:id="@+id/ll_botones"
+    android:layout_weight="1"
+    tools:context=".Figura1.MainActivity">
+    <EditText
+        android:id="@+id/et_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:ems="10"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="1">
-
+        android:gravity="center_horizontal">
         <Button
-            android:id="@+id/b_saludar"
+            android:id="@+id/b1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/saludar"/>
-
+            android:onClick="onPulsado"
+            android:text="@string/aceptar" />
         <Button
-            android:id="@+id/b_cambiar"
+            android:id="@+id/b_salir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cambiar" />
+            android:text="@string/salir"/>
     </LinearLayout>
 </LinearLayout>

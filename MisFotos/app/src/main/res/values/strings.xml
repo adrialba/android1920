@@ -3,4 +3,5 @@
     <string name="saludar">SALUDAR</string>
     <string name="cambiar">CAMBIAR</string>
     <string name="salir">Salir</string>
+    <string name="hola">Hola!</string>
 </resources>

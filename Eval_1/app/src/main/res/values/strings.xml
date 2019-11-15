@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Eval_1</string>
+    <string name="tv_escribe_nombre">Escribe tu nombre</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="salir">Salir</string>
+    <string name="amarillo">amarillo</string>
+    <string name="cyan">cyan</string>
+    <string name="gris">gris</string>
+    <string name="volver">Volver</string>
+    <string name="cambiar">cambiar</string>
+    <string name="saludar">Hola, %s</string>
+    <string name="hola">Hola</string>
+</resources>

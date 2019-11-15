@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DosActivities</string>
+    <string name="saludar">SALUDAR</string>
+    <string name="cambiar">CAMBIAR</string>
+    <string name="salir">Salir</string>
+    <string name="hola">Hola!</string>
+    <string name="t_cambiar">Cambiar</string>
+    <string name="pregunta_color">¿%S, Que color te gusta?</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="amarillo">Amarillo</string>
+    <string name="azul">Azul</string>
+    <string name="gris">Gris</string>
+</resources>

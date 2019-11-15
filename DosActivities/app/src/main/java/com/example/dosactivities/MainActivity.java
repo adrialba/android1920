@@ -1,7 +1,11 @@
-package com.example.misfotos;
+package com.example.dosactivities;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
+
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -16,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout ll_botones;
     private ImageView iv_foto;
     private Toolbar toolbar;
-;    @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b_cambiar.setOnClickListener(this);
         b_saludar = findViewById(R.id.b_saludar);
         b_saludar.setOnClickListener(this);
+        //Listeners especiales
         iv_foto = findViewById(R.id.iv_foto);
         registerForContextMenu(iv_foto); //Listener longClick
         ll_botones = findViewById(R.id.ll_botones);
@@ -41,20 +46,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.b_cambiar:
-                cambiar();
+                pasar();
                 break;
             case R.id.b_saludar:
                 saludar();
                 break;
         }
     }
-
+    private void pasar() {
+        //Utilizamos un objeto llamado Intent
+        Intent i = new Intent(this,SecondActivity.class);
+        i.putExtra("nombre", "Adrian");
+        /*Iniciar la segunda y quedarae alli para siempre*/
+        //startActivity(i);
+        //finish();
+        /*Iniciar la segunda de forma modal y quedaese esperando un resultado*/
+        startActivityForResult(i, 0);
+    }
+    //Este metodo solo si hemos hecho startActivityForResult()
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        int color = data.getIntExtra("color", Color.LTGRAY);
+        ll_botones.setBackgroundColor(color);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
@@ -72,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         //infla el Layout correspondiente a un menu contextual
