@@ -1,32 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentNombre">
+    android:orientation="vertical"
+    tools:context=".NameFragment"
+    android:id="@+id/fr_color">
 
     <TextView
+        android:id="@+id/tvElige"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-    <EditText
-        android:id="@+id/et_nombre"
+        android:layout_height="wrap_content"
+        android:text="@string/tvElige"
+        android:textSize="30sp"
+        app:fontFamily="sans-serif-condensed" />
+
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/rg">
+
+        <RadioButton
+            android:id="@+id/b_azul"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:text="Azul"
+            />
+
+        <RadioButton
+            android:id="@+id/b_rojo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Rojo"
+            />
+
+        <RadioButton
+            android:id="@+id/b_verde"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Verde"
+            />
+    </RadioGroup>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@android:dimen/app_icon_size"
+        android:gravity="center_horizontal">
+
         <Button
-            android:id="@+id/b1"
+            android:id="@+id/b_aceptar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="aceptar"/>
+            android:text="@string/aceptar" />
+
         <Button
-            android:id="@+id/b2"
+            android:id="@+id/b_salir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="salir"/>
+            android:text="@string/salir" />
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

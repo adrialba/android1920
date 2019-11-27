@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CancionesV0</string>
+    <string name="titulo">Mis canciones</string>
+    <string name="nuevo">INSERTAR NUEVO</string>
+</resources>
