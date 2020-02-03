@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NameFragment.OnBo
     }
 
     @Override
-    public void onBotonPulsado(View v) {
+    public void OnChangeColor(View v) {
         switch (v.getId()){
             case R.id.b1:
                 /*

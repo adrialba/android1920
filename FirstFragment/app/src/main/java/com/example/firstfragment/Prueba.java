@@ -57,7 +57,7 @@ public class Prueba extends Fragment {
         super.onDetach();
         mListener = null;
     }
-    public void OnFragmentInteractionListener{
+    public interface OnFragmentInteractionListener{
         void onFragmentInteraction(Uri uri);
     }
 }

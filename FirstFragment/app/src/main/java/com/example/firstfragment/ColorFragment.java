@@ -52,22 +52,22 @@ public class ColorFragment extends Fragment {
         //añadir eventos, etc.
         TextView tv_elige = result.findViewById(R.id.tvElige);
         tv_elige.setText(getResources().getString(R.string.tvElige));
-        Button b_aceptar = result.findViewById(R.id.b1);
+        Button b_aceptar = result.findViewById(R.id.b_aceptar);
         b_aceptar.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //Redirigir el evento a la activity
-                        mListener.onBotonPulsado(v);
+                        mListener.OnChangeColor(v);
                     }
                 }
         );
-        Button b_salir = result.findViewById(R.id.b2);
+        Button b_salir = result.findViewById(R.id.b_salir);
         b_salir.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mListener.onBotonPulsado(v);
+                        mListener.OnChangeColor(v);
                     }
                 }
         );
@@ -97,7 +97,7 @@ public class ColorFragment extends Fragment {
         }
     }
     public interface OnInteractionListener{
-        void onBotonPulsado(View v);
+        void OnChangeColor(View v);
         void OnColorElegido(int item);
     }
 }
