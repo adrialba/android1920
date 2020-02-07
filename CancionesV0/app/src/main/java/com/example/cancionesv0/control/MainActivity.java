@@ -1,13 +1,16 @@
 package com.example.cancionesv0.control;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.cancionesv0.R;
 import com.example.cancionesv0.modelo.Cancion;
@@ -38,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnLi
         rowId = -(savedInstanceState==null? -1: savedInstanceState.getLong("rowId"));
     //Al empezar la aplicacion no estamos en ninguna cancion
     }
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -46,27 +48,34 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnLi
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         menu.setHeaderTitle(lf.aa.getItem(info.position).getTitulo());
     }
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //Si estamos posicionados en una cancion, la guardamos
         if(rowId!=-1) outState.putLong("rowId", rowId);
     }
-
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Cancion c = lf.aa.getItem(info.position);
+        rowId = info.id;
+        Log.d(getLocalClassName(), cancion.toString()+info.position);
+        //Cancion c = (Cancion) lf.aa.getItem(info.position);
         switch(item.getItemId()){
             case R.id.fila_borrar:
-                lf.aa.remove(c);
+                //lf.aa.remove(c);
+                ListFragment.dbh.borrar(rowId);
+                actualizarLista();
+                rowId = 1; //Se ha borrado y no estamos ya posicionados en ningun lugar
                 if((grande())) cargarFragmentDetalle(new EmptyFragment());
                 break;
             case R.id.fila_editar:
                 if(grande()) {
                     //Cargar el fragment con los datos de la cancion
-                    df = DetailFragment.newInstance(c);
+                    Cursor c = ListFragment.dbh.getItem(rowId);
+                    cancion = new Cancion(
+                            c.getString(1), c.getString(2), c.getString(3),
+                            Cancion.Tipo.valueOf(c.getString(4)));
+                    df = DetailFragment.newInstance(cancion);
                     cargarFragmentDetalle(df);
                 } else {// Abrir el forn con un intent y pasarle los datos para editar
                     //Abrir el intent con el Detail de form
@@ -146,6 +155,9 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnLi
             //Primero sacar la posicion del objeto
                 //lf.aa.remove(lf.aa.getItem(position));
                 //lf.aa.insert(cancion, position);
+            ListFragment.dbh.actualizar(rowId, cancion.getTitulo(),
+                    cancion.getAutor(), cancion.getAnio(), cancion.getTipo().toString());
+            actualizarLista();
         } else {
                 //lf.aa.add(cancion);
             ListFragment.dbh.insertar(cancion);
@@ -155,13 +167,11 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnLi
         df = new DetailFragment();
         cargarFragmentDetalle(df);
     }
-
     private void actualizarLista() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fr_lista, new ListFragment());
         transaction.commit();
     }
-
     @Override
     public void onTipoSelected(int item) {
         switch (item) {
@@ -175,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnLi
                 cancion.setTipo(Cancion.Tipo.FIESTA);
         }
     }
-    private void cargarFragmentDetalle(DetailFragment df) {
+    private void cargarFragmentDetalle(Fragment f) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fr_detalle, df);
         transaction.commit();

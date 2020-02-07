@@ -51,6 +51,18 @@ public class DBHandler {
         Log.i(DB_NAME, "...insertando");
         return db.insert(TABLE_NAME, null, cv);
     }
+    public boolean borrar(long rowId){
+        return db.delete(TABLE_NAME, KEY_ROWID+"="+rowId, null)>0;
+    }
+    public boolean actualizar(long rowId, String titulo, String autor, int anio, String tipo){
+        String[] rows = {rowId+""};
+        ContentValues args = new ContentValues();
+        args.put(KEY_TITULO, titulo);
+        args.put(KEY_AUTOR, autor);
+        args.put(KEY_ANIO, anio);
+        args.put(KEY_TIPO, tipo);
+        return db.update(TABLE_NAME,args, KEY_ROWID+"="+rowId, null)==1;
+    }
     public Cursor listado(){
         String[] campos = {KEY_ROWID, KEY_TITULO, KEY_AUTOR, KEY_ANIO, KEY_TIPO};
         Cursor mCursor = db.query(TABLE_NAME, campos, null, null, null, null, null);
@@ -60,6 +72,14 @@ public class DBHandler {
     //Estos metodos encapsula el getString
     public String getTitulo(Cursor c){
         return c.getString(1);
+    }
+    public Cursor getItem(long rowId) {
+        String[] campos = {KEY_ROWID, KEY_TITULO, KEY_AUTOR, KEY_ANIO, KEY_TIPO};
+        Cursor c = db.query(TABLE_NAME, campos,
+                KEY_ROWID+"="+rowId,
+                null, null, null, null, null);
+        if(c!=null) c.moveToFirst(); //Por si acaso hay mas de uno
+        return c;
     }
     //Clase privada estatica
     public static class DBHElper extends SQLiteOpenHelper{
